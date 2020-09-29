@@ -34,8 +34,7 @@ class TestCase extends Orchestra
         ]);
 
 
-        include_once __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        (new \CreatePackageTable())->up();
-
+        include_once __DIR__.'/../database/migrations/create_skeleton_table.php';
+        (new \CreateSkeletonTable())->up();
     }
 }
