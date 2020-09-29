@@ -12,6 +12,7 @@ class CreateSkeletonTable extends Migration
             $table->bigIncrements('id');
 
             // add fields
+            $table->string('name')->comment("Name of Guy");//
 
             $table->timestamps();
         });
