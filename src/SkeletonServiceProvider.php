@@ -61,6 +61,7 @@ class SkeletonServiceProvider extends ServiceProvider
             }
         );
 
+        #
         if (App::environment(['local', 'testing'])) {
             // global url to string
             Route::get(
@@ -70,8 +71,16 @@ class SkeletonServiceProvider extends ServiceProvider
                 }
             );
 
+            // global url to blade view
+            Route::get(
+                '/grok/Spatie/Skeleton/blade',
+                function () {
+                    return view('skeleton::groks/index');
+                }
+            );
+
             // global url to controller
-            #Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'grok_route_to_controller']);
+            Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'grok_route_to_controller']);
         }
     }
 
