@@ -51,7 +51,7 @@ class SkeletonServiceProvider extends ServiceProvider
         # Route::get('/Spatie/Skeleton/example1', [SkeletonController::class,'example']);
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
         Route::macro(
-            'skeleton',
+            'Spatie_Skeleton',
             function (string $prefix) {
                 Route::prefix($prefix)->group(
                     function () {
@@ -71,7 +71,7 @@ class SkeletonServiceProvider extends ServiceProvider
             );
 
             // global url to controller
-            Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'grok_route_to_controller']);
+            #Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'grok_route_to_controller']);
         }
     }
 
