@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Spatie\keleton\Http\Controllers;
+namespace Spatie\Skeleton\Http\Controllers;
 
 class SkeletonController
 {
