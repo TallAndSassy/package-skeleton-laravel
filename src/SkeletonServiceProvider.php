@@ -4,6 +4,7 @@ namespace Spatie\Skeleton;
 
 use Illuminate\Support\ServiceProvider;
 use Spatie\Skeleton\Commands\SkeletonCommand;
+use Spatie\Skeleton\Http\Controllers\SkeletonController;
 
 class SkeletonServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,7 @@ class SkeletonServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
+        Route::get('/Vendor/Skeleton', [SpatiePackage6Controller::class,'index']);
     }
 
     public function register()

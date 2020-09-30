@@ -6,12 +6,12 @@ use Illuminate\Console\Command;
 
 class SkeletonCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'hw';
 
-    public $description = 'My command';
+    public $description = 'Default description for Spatie/Skeleton command';
 
     public function handle()
     {
-        $this->comment('All done');
+        $this->comment('Spatie/Skeleton/hw/tbd');
     }
 }
