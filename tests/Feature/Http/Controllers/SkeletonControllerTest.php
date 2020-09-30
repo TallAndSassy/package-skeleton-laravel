@@ -9,8 +9,15 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
     public function it_returns_ok()
     {
         $this
-            ->get('/Spatie/Skeleton')
+            ->get('/grok/Spatie/Skeleton/string')
             ->assertOk()
-            ->assertSee('ok');
+            ->assertSee('Hello world.');
+
+//        $prefix = 'Spatie_Skeleton_Prefix'; // this must match/sync with what was put in tests/TestCase.php/setup
+//
+//        $this
+//            ->get("/$prefix/Spatie/Skeleton/example1")
+//            ->assertOk()
+//            ->assertSee('hw(Spatie\Skeleton\Http\Controllers\SkeletonController)');
     }
 }

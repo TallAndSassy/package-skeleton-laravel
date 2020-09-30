@@ -1,5 +1,5 @@
 {
-    "name": ":vendor_name/:package_name",
+    "name": "spatie/skeleton",
     "description": ":package_description",
     "keywords": [
         ":vendor_name",
@@ -9,9 +9,9 @@
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Your Name",
+            "email": "Your@Email.com",
+            "homepage": "https://www.TallAndSassy.com",
             "role": "Developer"
         }
     ],

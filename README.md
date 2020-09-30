@@ -34,6 +34,11 @@ You can publish the config file with:
 php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
 ```
 
+You can grok the routes (when .env(local)) by visiting 
+    
+http://test-spatie.test/grok/Spatie/Skeleton/string
+http://test-spatie.test/grok/Spatie/Skeleton/controller
+
 This is the contents of the published config file:
 
 ```php

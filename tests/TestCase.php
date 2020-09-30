@@ -5,6 +5,7 @@ namespace Spatie\Skeleton\Tests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\Skeleton\SkeletonServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class TestCase extends Orchestra
 {
@@ -15,6 +16,12 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Spatie\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
+
+         // route prefix
+        // this must match/sync with what was put in
+        // tests/Feature/Http/Controllers/SkeletonControllerTest.php/setup
+        $prefix = 'Spatie_Skeleton_Prefix';
+        Route::skeleton($prefix); # what is our prefix route (just for testing)?
     }
 
     protected function getPackageProviders($app)
