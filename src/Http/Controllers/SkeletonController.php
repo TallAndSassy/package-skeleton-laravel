@@ -5,13 +5,10 @@ namespace Spatie\Skeleton\Http\Controllers;
 
 class SkeletonController
 {
-    public function example()
+    public function sample()
     {
-        return 'hw(Spatie\Skeleton\Http\Controllers\SkeletonController)';
+        return 'Hello from: '.__METHOD__;
     }
 
-    public function grok_route_to_controller()
-    {
-        return "Hello from: ".__METHOD__;
-    }
+
 }

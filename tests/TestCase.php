@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 class TestCase extends Orchestra
 {
+    protected $userDefinedBladePrefix;
     public function setUp(): void
     {
         parent::setUp();
@@ -20,8 +21,9 @@ class TestCase extends Orchestra
          // route prefix
         // this must match/sync with what was put in
         // tests/Feature/Http/Controllers/SkeletonControllerTest.php/setup
-        $prefix = 'Spatie_Skeleton_Prefix';
-        Route::Spatie_Skeleton($prefix); # what is our prefix route (just for testing)?
+        // Hint: 'Blade Prefix' (all lowercase, no spaces) is a substition string when using this as a template
+        $this->userDefinedBladePrefix = uniqid("Blah");
+        Route::bladeprefix($this->userDefinedBladePrefix); # what is our prefix route (just for testing)?
     }
 
     protected function getPackageProviders($app)

@@ -46,28 +46,54 @@ class SkeletonServiceProvider extends ServiceProvider
             );
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'bladeprefix');
 
-        # Route::get('/Spatie/Skeleton/example1', [SkeletonController::class,'example']);
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
+
         Route::macro(
-            'Spatie_Skeleton',
+            'bladeprefix',
+//             JJ you left off mosstly assuming that I need to replace the above
+//            with a new bladeprefix question, defaulting to 'tassy'
+//            You might need to add a manual step to rename the file
             function (string $prefix) {
                 Route::prefix($prefix)->group(
+
                     function () {
-                        Route::get('/Spatie/Skeleton', [SkeletonController::class, 'example']);
+                        // Sample routes that only show while developing...
+                        if (App::environment(['local', 'testing'])) {
+                            // prefixed url to string
+                            Route::get(
+                                '/Spatie/Skeleton/string', // you will absolutely need a prefix in your url
+                                function () {
+                                    return "Hello string via blade prefix";
+                                }
+                            );
+
+                            // prefixed url to blade view
+                            Route::get(
+                                '/Spatie/Skeleton/blade',
+                                function () {
+                                    return view('bladeprefix::groks/index');
+                                }
+                            );
+
+                            // prefixed url to controller
+                            Route::get(
+                                '/Spatie/Skeleton/controller',
+                                [SkeletonController::class, 'sample']
+                            );
+                        }
                     }
                 );
             }
         );
 
-        #
+
         if (App::environment(['local', 'testing'])) {
             // global url to string
             Route::get(
                 '/grok/Spatie/Skeleton/string',
                 function () {
-                    return "Hello world.";
+                    return "Hello string via global url.";
                 }
             );
 
@@ -75,12 +101,12 @@ class SkeletonServiceProvider extends ServiceProvider
             Route::get(
                 '/grok/Spatie/Skeleton/blade',
                 function () {
-                    return view('skeleton::groks/index');
+                    return view('bladeprefix::groks/index');
                 }
             );
 
             // global url to controller
-            Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'grok_route_to_controller']);
+            Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'sample']);
         }
     }
 
