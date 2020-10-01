@@ -6,7 +6,7 @@ namespace Spatie\Skeleton\Tests\Feature\Http\Controllers;
 class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
 {
     /** @test */
-    public function it_returns_ok()
+    public function global_urls_returns_ok()
     {
         // Test hard-coded routes...
         $this
@@ -21,8 +21,12 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
             ->get('/grok/Spatie/Skeleton/controller')
             ->assertOk()
             ->assertSee('Hello from: Spatie\Skeleton\Http\Controllers\SkeletonController::sample');
+    }
 
 
+    /** @test */
+    public function prefixed_urls_returns_ok()
+    {
         // Test user-defined routes...
         // Reproduce in routes/web.php like so
         //  Route::bladeprefix('staff');

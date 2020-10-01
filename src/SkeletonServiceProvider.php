@@ -72,7 +72,7 @@ class SkeletonServiceProvider extends ServiceProvider
                             Route::get(
                                 '/Spatie/Skeleton/blade',
                                 function () {
-                                    return view('bladeprefix::groks/index');
+                                    return view('bladeprefix::grok/index');
                                 }
                             );
 
@@ -101,7 +101,7 @@ class SkeletonServiceProvider extends ServiceProvider
             Route::get(
                 '/grok/Spatie/Skeleton/blade',
                 function () {
-                    return view('bladeprefix::groks/index');
+                    return view('bladeprefix::grok/index');
                 }
             );
 
