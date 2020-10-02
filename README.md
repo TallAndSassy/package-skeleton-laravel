@@ -21,7 +21,7 @@ You can install the package via composer:
 [ ] Make a local table for testing called 'tmp_laravel_package' (per 'phpunit.xml')
 
 ```bash
-composer require :vendor_name/:package_name
+composer require spatie/skeleton
 ```
 
 You can publish and run the migrations with:

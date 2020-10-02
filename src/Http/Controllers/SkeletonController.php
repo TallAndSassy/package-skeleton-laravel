@@ -7,6 +7,6 @@ class SkeletonController
 {
     public function sample()
     {
-        return 'Hello from: '.__METHOD__;
+        return 'Hello Skeleton from: '.__METHOD__;
     }
 }

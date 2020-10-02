@@ -12,15 +12,15 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
         $this
             ->get('/grok/Spatie/Skeleton/string')
             ->assertOk()
-            ->assertSee('Hello string via global url.');
+            ->assertSee('Hello Skeleton string via global url.');
         $this
-            ->get('/grok/Spatie/Skeleton/blade')
+            ->get('/grok/Spatie/Skeleton/test_blade')
             ->assertOk()
-            ->assertSee('Hello from blade in Spatie/Skeleton/groks/index');
+            ->assertSee('Hello Skeleton from blade in Spatie/Skeleton/groks/test_blade');
         $this
             ->get('/grok/Spatie/Skeleton/controller')
             ->assertOk()
-            ->assertSee('Hello from: Spatie\Skeleton\Http\Controllers\SkeletonController::sample');
+            ->assertSee('Hello Skeleton from: Spatie\Skeleton\Http\Controllers\SkeletonController::sample');
     }
 
 
@@ -40,18 +40,18 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
             ->get("/$userDefinedBladePrefix/Spatie/Skeleton/string")
             ->assertOk()
             #->assertSee('hw(Spatie\Skeleton\Http\Controllers\SkeletonController)');
-        ->assertSee('Hello string via blade prefix');
+        ->assertSee('Hello Skeleton string via blade prefix');
 
         // blade
         $this
-            ->get("/$userDefinedBladePrefix/Spatie/Skeleton/blade")
+            ->get("/$userDefinedBladePrefix/Spatie/Skeleton/test_blade")
             ->assertOk()
-            ->assertSee('Hello from blade in Spatie/Skeleton/groks/index');
+            ->assertSee('Hello Skeleton from blade in Spatie/Skeleton/groks/test_blade');
 
         // controller
         $this
             ->get("/$userDefinedBladePrefix/Spatie/Skeleton/controller")
             ->assertOk()
-            ->assertSee('Hello from: Spatie\Skeleton\Http\Controllers\SkeletonController::sample');
+            ->assertSee('Hello Skeleton from: Spatie\Skeleton\Http\Controllers\SkeletonController::sample');
     }
 }

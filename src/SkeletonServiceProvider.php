@@ -39,6 +39,23 @@ class SkeletonServiceProvider extends ServiceProvider
                 );
             }
 
+             $this->publishes([
+                 __DIR__.'/../resources/public' => public_path('eleganttechnologies/grok'),
+                ], ['public']);
+
+            // Publishing assets.
+            /*$this->publishes([
+                __DIR__.'/../resources/assets' => public_path('spatie/skeleton'),
+            ], 'grok.views');*/
+
+            // Publishing the translation files.
+            /*$this->publishes([
+                __DIR__.'/../resources/lang' => resource_path('lang/spatie/skeleton'),
+            ], 'grok.views');*/
+
+
+
+            // Registering package commands.
             $this->commands(
                 [
                     SkeletonCommand::class,
@@ -51,27 +68,25 @@ class SkeletonServiceProvider extends ServiceProvider
 
         Route::macro(
             'bladeprefix',
-//             JJ you left off mosstly assuming that I need to replace the above
-//            with a new bladeprefix question, defaulting to 'tassy'
-//            You might need to add a manual step to rename the file
             function (string $prefix) {
                 Route::prefix($prefix)->group(
                     function () {
+                        // Prefix Route Samples -BEGIN-
                         // Sample routes that only show while developing...
                         if (App::environment(['local', 'testing'])) {
                             // prefixed url to string
                             Route::get(
                                 '/Spatie/Skeleton/string', // you will absolutely need a prefix in your url
                                 function () {
-                                    return "Hello string via blade prefix";
+                                    return "Hello Skeleton string via blade prefix";
                                 }
                             );
 
                             // prefixed url to blade view
                             Route::get(
-                                '/Spatie/Skeleton/blade',
+                                '/Spatie/Skeleton/test_blade',
                                 function () {
-                                    return view('bladeprefix::grok/index');
+                                    return view('bladeprefix::test_blade');
                                 }
                             );
 
@@ -81,32 +96,49 @@ class SkeletonServiceProvider extends ServiceProvider
                                 [SkeletonController::class, 'sample']
                             );
                         }
+                        // Prefix Route Samples -END-
+
+                        // TODO: Add your own prefixed routes here...
                     }
                 );
             }
         );
+        Route::bladeprefix('bladeprefix'); // This works. http://test-jet.test/bladeprefix/Spatie/Skeleton/string
+        // They are addatiive, so in your own routes/web.php file, do Route::bladeprefix('staff'); to
+        // make http://test-jet.test/staff/Spatie/Skeleton/string work
 
 
+        // global url samples -BEGIN-
         if (App::environment(['local', 'testing'])) {
             // global url to string
             Route::get(
                 '/grok/Spatie/Skeleton/string',
                 function () {
-                    return "Hello string via global url.";
+                    return "Hello Skeleton string via global url.";
                 }
             );
 
             // global url to blade view
             Route::get(
-                '/grok/Spatie/Skeleton/blade',
+                '/grok/Spatie/Skeleton/test_blade',
                 function () {
-                    return view('bladeprefix::grok/index');
+                    return view('bladeprefix::test_blade');
                 }
             );
 
             // global url to controller
             Route::get('/grok/Spatie/Skeleton/controller', [SkeletonController::class, 'sample']);
         }
+        // global url samples -END-
+
+        // TODO: Add your own global routes here...
+
+        // GROK
+        if (App::environment(['local', 'testing'])) {
+            \ElegantTechnologies\Grok\GrokWrangler::grokMe(static::class, 'Spatie', 'skeleton', 'resources/views/grok');
+            Route::get('/grok/Spatie/Skeleton', fn () => view('bladeprefix::grok/index'));
+        }
+        // TODO: Add your own other boot related stuff here...
     }
 
     public function register()
