@@ -76,7 +76,7 @@ class SkeletonServiceProvider extends ServiceProvider
                         if (App::environment(['local', 'testing'])) {
                             // prefixed url to string
                             Route::get(
-                                '/Spatie/Skeleton/string', // you will absolutely need a prefix in your url
+                                '/Spatie/Skeleton/sample_string', // you will absolutely need a prefix in your url
                                 function () {
                                     return "Hello Skeleton string via blade prefix";
                                 }
@@ -84,9 +84,9 @@ class SkeletonServiceProvider extends ServiceProvider
 
                             // prefixed url to blade view
                             Route::get(
-                                '/Spatie/Skeleton/test_blade',
+                                '/Spatie/Skeleton/sample_blade',
                                 function () {
-                                    return view('bladeprefix::test_blade');
+                                    return view('bladeprefix::sample_blade');
                                 }
                             );
 
@@ -112,7 +112,7 @@ class SkeletonServiceProvider extends ServiceProvider
         if (App::environment(['local', 'testing'])) {
             // global url to string
             Route::get(
-                '/grok/Spatie/Skeleton/string',
+                '/grok/Spatie/Skeleton/sample_string',
                 function () {
                     return "Hello Skeleton string via global url.";
                 }
@@ -120,9 +120,9 @@ class SkeletonServiceProvider extends ServiceProvider
 
             // global url to blade view
             Route::get(
-                '/grok/Spatie/Skeleton/test_blade',
+                '/grok/Spatie/Skeleton/sample_blade',
                 function () {
-                    return view('bladeprefix::test_blade');
+                    return view('bladeprefix::sample_blade');
                 }
             );
 
@@ -135,7 +135,7 @@ class SkeletonServiceProvider extends ServiceProvider
 
         // GROK
         if (App::environment(['local', 'testing'])) {
-            \ElegantTechnologies\Grok\GrokWrangler::grokMe(static::class, 'Spatie', 'skeleton', 'resources/views/grok');
+            \ElegantTechnologies\Grok\GrokWrangler::grokMe(static::class, 'Spatie', 'skeleton', 'resources/views/grok', 'bladeprefix');//bladeprefix gets macro'd out
             Route::get('/grok/Spatie/Skeleton', fn () => view('bladeprefix::grok/index'));
         }
         // TODO: Add your own other boot related stuff here...

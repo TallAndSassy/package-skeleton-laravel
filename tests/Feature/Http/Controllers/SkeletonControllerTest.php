@@ -14,9 +14,9 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
             ->assertOk()
             ->assertSee('Hello Skeleton string via global url.');
         $this
-            ->get('/grok/Spatie/Skeleton/test_blade')
+            ->get('/grok/Spatie/Skeleton/sample_blade')
             ->assertOk()
-            ->assertSee('Hello Skeleton from blade in Spatie/Skeleton/groks/test_blade');
+            ->assertSee('Hello Skeleton from blade in Spatie/Skeleton/groks/sample_blade');
         $this
             ->get('/grok/Spatie/Skeleton/controller')
             ->assertOk()
@@ -44,9 +44,9 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
 
         // blade
         $this
-            ->get("/$userDefinedBladePrefix/Spatie/Skeleton/test_blade")
+            ->get("/$userDefinedBladePrefix/Spatie/Skeleton/sample_blade")
             ->assertOk()
-            ->assertSee('Hello Skeleton from blade in Spatie/Skeleton/groks/test_blade');
+            ->assertSee('Hello Skeleton from blade in Spatie/Skeleton/groks/sample_blade');
 
         // controller
         $this
