@@ -10,7 +10,7 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
     {
         // Test hard-coded routes...
         $this
-            ->get('/grok/Spatie/Skeleton/string')
+            ->get('/grok/Spatie/Skeleton/sample_string')
             ->assertOk()
             ->assertSee('Hello Skeleton string via global url.');
         $this
@@ -37,7 +37,7 @@ class SkeletonControllerTest extends \Spatie\Skeleton\Tests\TestCase
 
         // string
         $this
-            ->get("/$userDefinedBladePrefix/Spatie/Skeleton/string")
+            ->get("/$userDefinedBladePrefix/Spatie/Skeleton/sample_string")
             ->assertOk()
             #->assertSee('hw(Spatie\Skeleton\Http\Controllers\SkeletonController)');
         ->assertSee('Hello Skeleton string via blade prefix');
