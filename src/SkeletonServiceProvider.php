@@ -10,6 +10,8 @@ use Spatie\Skeleton\Http\Controllers\SkeletonController;
 
 class SkeletonServiceProvider extends ServiceProvider
 {
+    public static string $blade_prefix = "bladeprefix"; #bladeprefix is a template term
+    
     public function boot()
     {
         if ($this->app->runningInConsole()) {
@@ -138,6 +140,9 @@ class SkeletonServiceProvider extends ServiceProvider
             \ElegantTechnologies\Grok\GrokWrangler::grokMe(static::class, 'Spatie', 'skeleton', 'resources/views/grok', 'bladeprefix');//bladeprefix gets macro'd out
             Route::get('/grok/Spatie/Skeleton', fn () => view('bladeprefix::grok/index'));
         }
+        
+        // TODO: Register your livewire components that live in this package here:
+        # \Livewire\Livewire::component('tassygroklivewirejet::a-a-nothing',  \TallAndSassy\GrokLivewireJet\Components\DemoUiChunks\AANothing::class);
         // TODO: Add your own other boot related stuff here...
     }
 
