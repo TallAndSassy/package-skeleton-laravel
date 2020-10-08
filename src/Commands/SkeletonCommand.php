@@ -17,6 +17,11 @@ class SkeletonCommand extends Command
 
     public $description = 'Default description for Spatie/Skeleton command';
 
+    public $help = <<<EOD
+    Sample: Your extendended instructions goes here.
+    These instructions should be more thurough than the description.
+    EOD;
+    
     public function handle()
     {
         $this->comment('Spatie/Skeleton/hw/tbd');
