@@ -15,6 +15,13 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 Please send love
 
 ## Installation
+Before installing a new package it's always a good idea to clear your config cache:
+
+```bash
+php artisan config:clear
+```
+
+Then install the package with composer:
 
 You can install the package via composer:
 
