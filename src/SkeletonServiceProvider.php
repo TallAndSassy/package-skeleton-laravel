@@ -144,6 +144,28 @@ class SkeletonServiceProvider extends ServiceProvider
         // TODO: Register your livewire components that live in this package here:
         # \Livewire\Livewire::component('tassygroklivewirejet::a-a-nothing',  \TallAndSassy\GrokLivewireJet\Components\DemoUiChunks\AANothing::class);
         // TODO: Add your own other boot related stuff here...
+
+        // TODO: Add your own admin menu items here
+        /*
+         * ring $handle, string $Label, ?string $SvgHtml, ?string $IconName, ?string $urlIfNoFurtherChildren_nullIfGroup, ?string $IconSizingClasses = null
+         * \TallAndSassy\PageGuide\MenuTree::singleton('upper')->pushTop( // 'lower' puts items down low.
+                'admin.Cafe', // Key
+                'Cafe',         // $Label
+                null,//$SvgHtml
+                'heroicon-o-question-mark-circle', // $IconNameVisit: https://blade-ui-kit.com/blade-icons/heroicon-o-home
+                null, //$urlIfNoFurtherChildren_nullIfGroup
+                null //$IconSizingClasses
+            )
+                ->pushLink('admin.salad.fruit' . uniqid(), 'Fruit Salad', '/admin/fruit')
+                ->pushLink('admin.salad.leaf' . uniqid(), 'Lettuce Salad', '/admin/leaf')
+                ->pushLink('admin.salad.potato' . uniqid(), 'Yucky Salad', '/admin/potato')
+                ->pushGroup('condiments' . uniqid(), 'Condiments')
+                ->pushLink(
+                    'admin.condiments.mustard' . uniqid(),
+                    'Hymans Brand Mustard',
+                    '/admin/condiment/mustard'
+                );
+         */
     }
 
     public function register()
