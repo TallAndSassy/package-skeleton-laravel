@@ -11,6 +11,7 @@ use Spatie\Skeleton\Http\Controllers\SkeletonController;
 class SkeletonServiceProvider extends ServiceProvider
 {
     public static string $blade_prefix = "bladeprefix"; #bladeprefix is a template term
+    public static string $language_prefix = "languageprefix"; #languageprefix is a template term
 
     public function boot()
     {
@@ -41,7 +42,7 @@ class SkeletonServiceProvider extends ServiceProvider
                 );
             }
 
-             $this->publishes([
+            $this->publishes([
                  __DIR__.'/../resources/public' => public_path('spatie/skeleton'),
                 ], ['public']);
 
@@ -51,9 +52,12 @@ class SkeletonServiceProvider extends ServiceProvider
             ], 'grok.views');*/
 
             // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/spatie/skeleton'),
-            ], 'spatie.skeleton');*/
+            $this->loadTranslationsFrom(__DIR__ . '/../resources/lang/', static::$language_prefix);
+            if ($this->app->runningInConsole()) {
+                $this->publishes([
+                    __DIR__.'/../resources/lang' => "{$this->app['path.lang']}/vendor/".static::$language_prefix,
+                    ], 'spatie.skeleton');
+            }
 
 
 
@@ -64,6 +68,18 @@ class SkeletonServiceProvider extends ServiceProvider
                 ]
             );
         }
+
+        // Translation
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'bladeprefix'); // You could, for example, choose something else like Spaitie or 'Stuff'
+        if ($this->app->runningInConsole()) {
+            // Publishing the translation files.
+            /*$this->publishes([
+                __DIR__.'/../resources/lang' => resource_path('lang/spatie/skeleton'),
+                # MaybeToDo __DIR__.'/../resources/lang' => "{$this->app['path.lang']}/spatie/skeleton", see https://github.com/spatie/laravel-backup/blob/master/src/BackupServiceProvider.php
+            ], 'spatie.skeleton');*/
+        }
+
+
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'bladeprefix');
 
@@ -79,6 +95,7 @@ class SkeletonServiceProvider extends ServiceProvider
                             // prefixed url to string
                             Route::get(
                                 '/Spatie/Skeleton/sample_string', // you will absolutely need a prefix in your url
+                                // like: 'https://localhost/bladeprefix/Spatie/Skeleton/sample_string'
                                 function () {
                                     return "Hello Skeleton string via blade prefix";
                                 }
