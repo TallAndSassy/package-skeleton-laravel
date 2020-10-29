@@ -1,12 +1,4 @@
-<?php
-/*
- * Q: How do I  override  like __('welcome'), vs.  __('languageprefix::blah.OtherKey') in the main app
- * A: You must(?) override with /resources/lang/en.json in the main app
- * We call this file domainx.php, but you could also make 'geetings.php' for standard plugin-related salutations
-*/
-
-return [
-    'Hello' => 'Hi', // Access this in a blade via {{ __('languageprefix::domainx.Hello') }} or {{trans('...)}}
+'Hello' => 'Hi', // Access this in a blade via {{ __('languageprefix::domainx.Hello') }} or {{trans('...)}}
     // Note: language prefix does NOT need to match your blade prefix.  This is set in the ServiceProvider
     // You can make additional domains - just make a new file called 'blah.php' and access it via  __('languageprefix::blah.OtherKey')
     // Override this in your app by making resources/lang/vendor/languageprefix/en/domainx.php #Note: it is 'vendor' not 'spatie' and 'languageprefix', not 'bladeprefix' or 'skeleton'
@@ -17,4 +9,3 @@ return [
     'welcome' => 'Welcome, :NAME', // Welcome, DAYLE
     'goodbye' => 'Goodbye, :Name', // Goodbye, Dayle
     */
-];
