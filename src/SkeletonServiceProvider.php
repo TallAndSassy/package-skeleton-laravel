@@ -51,13 +51,7 @@ class SkeletonServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/assets' => public_path('spatie/skeleton'),
             ], 'grok.views');*/
 
-            // Publishing the translation files.
-            $this->loadTranslationsFrom(__DIR__ . '/../resources/lang/', static::$language_prefix);
-            if ($this->app->runningInConsole()) {
-                $this->publishes([
-                    __DIR__.'/../resources/lang' => "{$this->app['path.lang']}/vendor/".static::$language_prefix,
-                    ], 'spatie.skeleton');
-            }
+
 
 
 
@@ -69,14 +63,13 @@ class SkeletonServiceProvider extends ServiceProvider
             );
         }
 
-        // Translation
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'bladeprefix'); // You could, for example, choose something else like Spaitie or 'Stuff'
+        // Translation / Lang
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang/', static::$language_prefix);
         if ($this->app->runningInConsole()) {
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/spatie/skeleton'),
-                # MaybeToDo __DIR__.'/../resources/lang' => "{$this->app['path.lang']}/spatie/skeleton", see https://github.com/spatie/laravel-backup/blob/master/src/BackupServiceProvider.php
-            ], 'spatie.skeleton');*/
+            // Publishing the translation files to main app.
+            $this->publishes([
+                __DIR__.'/../resources/lang' => "{$this->app['path.lang']}/vendor/".static::$language_prefix,
+                ], 'spatie.skeleton');
         }
 
 
