@@ -37,7 +37,7 @@ package_description=$(ask_question "Package description" "")
 
 
 bladeprefix=$(ask_question "Blade Prefix - all lowercase and just one word, probably." "tassyvendornamelowercasepackagenamelowercase")
-languageprefix=$(ask_question "Language Prefix - all lowercase and just one word, probably." "tassyvendornamelowercasepackagenamelowercase")
+languageprefix=$(ask_question "Language Prefix - all lowercase and just one word, something globally unique." "packagename")
 
 class_name=$(echo "$package_name" | sed 's/[-_]/ /g' | awk '{for(j=1;j<=NF;j++){ $j=toupper(substr($j,1,1)) substr($j,2) }}1' | sed 's/[[:space:]]//g')
 
